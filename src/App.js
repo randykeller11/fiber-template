@@ -3,7 +3,7 @@ import React, { Suspense } from "react";
 import { Sky } from "@react-three/drei";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import Avatar4 from "./components/Avatar4";
+import Avatar5 from "./components/Avatar5";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
           <ambientLight intensity={0.9} />
           <Sky />
 
-          <Avatar4 />
+          <Avatar5 />
           <mesh position={[0, 0, 0]} rotation={[-1.55, 0, 0]}>
             <planeBufferGeometry attach="geometry" args={[20, 20]} />
             <meshPhongMaterial attach="material" color="darkgreen" />
