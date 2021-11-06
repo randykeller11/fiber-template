@@ -1,16 +1,8 @@
 import "./App.css";
 import React, { Suspense } from "react";
-import { useGLTF, OrbitControls } from "@react-three/drei";
+import { Sky, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Scene, AmbientLight } from "three";
-
-function Model(props) {
-  const { scene } = useGLTF(
-    "https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/druid/model.gltf"
-  );
-
-  return <primitive object={scene} {...props} />;
-}
+import Avatar from "./components/Avatar4";
 
 function App() {
   return (
@@ -19,7 +11,12 @@ function App() {
         <Canvas>
           <OrbitControls />
           <ambientLight intensity={0.9} />
-          <Model position={[0, 0, 0]} />
+          <Sky />
+          <Avatar />
+          <mesh position={[0, 0, 0]} rotation={[-1.55, 0, 0]}>
+            <planeBufferGeometry attach="geometry" args={[20, 20]} />
+            <meshPhongMaterial attach="material" color="darkgreen" />
+          </mesh>
         </Canvas>
       </Suspense>
     </>
