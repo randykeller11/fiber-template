@@ -13,26 +13,48 @@ export default function Model({ ...props }) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/avatar4.glb");
   const { actions } = useAnimations(animations, group);
+  const savedPos = useRef({ position: { z: 0, x: 0 }, rotation: { y: 0 } });
+
   const wPress = useKeyPress("w");
   const sPress = useKeyPress("s");
   const aPress = useKeyPress("a");
   const dPress = useKeyPress("d");
-  // const savedPos = useRef({ position: { z: 0 } });
-  useEffect(() => {
-    console.log(group.current);
-  }, []);
 
   useFrame((state, delta) => {
     const moveDistance = 20 * delta; // 200 pixels per second
     const rotateAngle = (Math.PI / 2) * delta; // pi/2 radians (90 degrees) per second
+
+    if (!wPress) {
+      actions["walk"].stop();
+      actions["idle"].play();
+      group.current.position.z = savedPos.current.position.z;
+      group.current.position.x = savedPos.current.position.x;
+      //   group.current.rotation.y = savedPos.current.rotation.y;
+    }
+
     if (wPress) {
+      actions["idle"].stop();
+
+      actions["walk"].play();
+      group.current.position.z = savedPos.current.position.z;
+      group.current.position.x = savedPos.current.position.x;
+
       group.current.translateZ(moveDistance);
+      savedPos.current.position.z = group.current.position.z;
+      savedPos.current.position.x = group.current.position.x;
     }
 
     if (sPress) {
+      actions["idle"].stop();
+
+      actions["walk"].play();
+      group.current.position.z = savedPos.current.position.z;
+      group.current.position.x = savedPos.current.position.x;
+
       group.current.translateZ(-moveDistance);
+      savedPos.current.position.z = group.current.position.z;
+      savedPos.current.position.x = group.current.position.x;
     }
-    var rotation_matrix = new THREE.Matrix4().identity();
     if (aPress) {
       group.current.rotation.y = group.current.rotation.y + rotateAngle;
     }
