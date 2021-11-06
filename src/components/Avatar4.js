@@ -61,7 +61,7 @@ export default function Model({ ...props }) {
     if (dPress) {
       group.current.rotation.y = group.current.rotation.y - rotateAngle;
     }
-    var relativeCameraOffset = new THREE.Vector3(0, 5, -10);
+    var relativeCameraOffset = new THREE.Vector3(0, 2, -5);
 
     var cameraOffset = relativeCameraOffset.applyMatrix4(
       group.current.matrixWorld
@@ -71,23 +71,6 @@ export default function Model({ ...props }) {
     state.camera.position.y = cameraOffset.y;
     state.camera.position.z = cameraOffset.z;
     state.camera.lookAt(group.current.position);
-
-    // if (walkForward) {
-    //   console.log("saved-w", savedPos.current.position.z);
-    //   console.log("group-w", group.current.position.z);
-
-    //   actions["idle"].stop();
-
-    //   actions["walk"].play();
-    //   group.current.position.z = savedPos.current.position.z;
-
-    //   group.current.position.z = group.current.position.z + 0.01;
-    //   savedPos.current.position.z = group.current.position.z;
-    // } else {
-    //   actions["walk"].stop();
-    //   actions["idle"].play();
-    //   group.current.position.z = savedPos.current.position.z;
-    // }
   });
 
   return (
