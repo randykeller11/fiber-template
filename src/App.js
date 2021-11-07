@@ -6,6 +6,8 @@ import { Canvas } from "@react-three/fiber";
 import Avatar5 from "./components/Avatar5";
 import Office from "./components/Office";
 import NewMural from "./components/NewMural";
+import Mural3 from "./components/Mural3";
+
 import Blm from "./components/Blm";
 function App() {
   return (
@@ -20,12 +22,13 @@ function App() {
             distance={450000}
           />
           <Blm
-            position={[13, -0.35, -48.9]}
-            scale={[2.8, 2.5, 2.6]}
-            rotation={[0, 0.55, 0]}
+            position={[-0.2, -0.2, -49]}
+            scale={[5, 2.5, 1]}
+            rotation={[0, 0.14, 0]}
           />
+
           <NewMural
-            position={[2, 2.7, 19.4]}
+            position={[2, 2.7, 19.49]}
             scale={[2.3, 2.2, 2.6]}
             rotation={[0, -2.85, 0]}
           />

@@ -73,8 +73,8 @@ export default function Model({ ...props }) {
     if (dPress) {
       group.current.rotation.y = group.current.rotation.y - rotateAngle;
     }
-    const relativeCameraOffset = new THREE.Vector3(-0.6, 2.1, -4);
-    const thirdPersonTarget = new THREE.Vector3(0, 1.7, 5);
+    const relativeCameraOffset = new THREE.Vector3(-0.6, 1.9, -4);
+    const thirdPersonTarget = new THREE.Vector3(0, 2.1, 5);
 
     var cameraOffset = relativeCameraOffset.applyMatrix4(
       group.current.matrixWorld
