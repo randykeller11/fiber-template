@@ -22,7 +22,7 @@ export default function Model({ ...props }) {
   const dPress = useKeyPress("d");
 
   useFrame((state, delta) => {
-    const moveDistance = 20 * delta; // 200 pixels per second
+    const moveDistance = 5 * delta; // 200 pixels per second
     const rotateAngle = (Math.PI / 2) * delta; // pi/2 radians (90 degrees) per second
 
     if (!wPress) {
@@ -73,7 +73,7 @@ export default function Model({ ...props }) {
     if (dPress) {
       group.current.rotation.y = group.current.rotation.y - rotateAngle;
     }
-    var relativeCameraOffset = new THREE.Vector3(-0.6, 2.1, -4);
+    const relativeCameraOffset = new THREE.Vector3(-0.6, 2.1, -4);
     const thirdPersonTarget = new THREE.Vector3(0, 1.7, 5);
 
     var cameraOffset = relativeCameraOffset.applyMatrix4(
