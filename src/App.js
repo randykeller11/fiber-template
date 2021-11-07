@@ -5,8 +5,7 @@ import { Sky } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import Avatar5 from "./components/Avatar5";
 import Office from "./components/Office";
-import Basquiat from "./components/Basquiat";
-import Mural from "./components/Mural";
+import NewMural from "./components/NewMural";
 import Blm from "./components/Blm";
 function App() {
   return (
@@ -24,6 +23,11 @@ function App() {
             position={[13, -0.35, -48.9]}
             scale={[2.8, 2.5, 2.6]}
             rotation={[0, 0.55, 0]}
+          />
+          <NewMural
+            position={[2, 2.7, 19.4]}
+            scale={[2.3, 2.2, 2.6]}
+            rotation={[0, -2.85, 0]}
           />
 
           <Avatar5 />
