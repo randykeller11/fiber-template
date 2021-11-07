@@ -6,6 +6,9 @@ import { Canvas } from "@react-three/fiber";
 import Avatar5 from "./components/Avatar5";
 import Office from "./components/Office";
 import Mural4 from "./components/Mural4";
+import Mural5 from "./components/Mural5";
+import BirdMural from "./components/BirdMural";
+
 import Blm from "./components/Blm";
 
 function Loader() {
@@ -35,6 +38,16 @@ function App() {
               position={[-0.2, 7, -52.5]}
               scale={[4.9, 3.5, 3]}
               rotation={[0, -3.17, 0]}
+            />
+            <Mural5
+              position={[15.6, 5.2, 30]}
+              scale={[1.8, 1.6, 1]}
+              rotation={[0, -3.15, 0]}
+            />
+            <BirdMural
+              position={[-20, 5.2, 22.3]}
+              scale={[1.8, 2, 1]}
+              rotation={[0, -1.1, 0]}
             />
 
             <Avatar5 />
