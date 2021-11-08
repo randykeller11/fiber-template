@@ -1,5 +1,5 @@
-import React, { Suspense } from "react";
-import { Sky, useProgress, Html } from "@react-three/drei";
+import React, { Suspense, useEffect } from "react";
+import { Sky, useProgress, Html, useGLTF } from "@react-three/drei";
 
 import Avatar5 from "../components/Avatar5";
 import Office from "../components/Office";
@@ -9,13 +9,30 @@ import Mural5 from "../components/Mural5";
 import Mural6 from "../components/Mural6";
 import Mural8 from "../components/Mural8";
 import Mural9 from "../components/Mural9";
+import useModelStore from "../stores/useModelStore";
 
 function Loader() {
   const { progress } = useProgress();
   return <Html center>{progress} % loaded</Html>;
 }
 
+// function Model(location, ...props) {
+//   const { scene } = useGLTF(
+//     "https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/druid/model.gltf"
+//   );
+
+//   return <primitive object={scene} {...props} />;
+// }
+
 function Home() {
+  const modelStore = useModelStore();
+
+  useEffect(() => {
+    modelStore.add(
+      "https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/druid/model.gltf"
+    );
+  }, []);
+
   return (
     <Suspense fallback={<Loader />}>
       <ambientLight intensity={0.9} />
@@ -25,6 +42,18 @@ function Home() {
         azimuth={0.25}
         distance={450000}
       />
+      {modelStore.length > 0 && (
+        <Suspense fallback={<Loader />}>
+          {modelStore.models.map((model) => {
+            <primitive
+              object={model.scene}
+              position={model.pos}
+              rotation={model.rot}
+              scale={model.scale}
+            />;
+          })}
+        </Suspense>
+      )}
       <Blm
         position={[-19.8, -0.2, -44]}
         scale={[2.4, 2.55, 0.3]}
