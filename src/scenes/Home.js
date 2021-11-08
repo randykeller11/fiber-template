@@ -26,7 +26,7 @@ function Home() {
         distance={450000}
       />
       <Blm
-        position={[-19.7, -0.2, -44]}
+        position={[-19.8, -0.2, -44]}
         scale={[2.4, 2.55, 0.3]}
         rotation={[0, 1.7, 0]}
       />
@@ -51,9 +51,9 @@ function Home() {
         rotation={[0, -1.17, -0.02]}
       />
       <Mural9
-        position={[14.89, 0.2, -43.65]}
-        scale={[0.55, 0.55, 0.5]}
-        rotation={[0, -0.1, 0]}
+        position={[14.89, 0.2, -41]}
+        scale={[0.7, 0.55, 0.8]}
+        rotation={[0, -0.3, 0]}
       />
       <Avatar5 />
       <Office position={[-20, 0, 30]} scale={[2.5, 2.5, 2.5]} />
