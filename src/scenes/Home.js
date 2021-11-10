@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { Sky, useProgress, Html, useGLTF } from "@react-three/drei";
 
 import Avatar5 from "../components/Avatar5";
@@ -16,23 +16,13 @@ function Loader() {
   return <Html center>{progress} % loaded</Html>;
 }
 
-// function Model(location, ...props) {
-//   const { scene } = useGLTF(
-//     "https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/druid/model.gltf"
-//   );
+function Model(state, ...props) {
+  const { scene } = useGLTF(state.location);
 
-//   return <primitive object={scene} {...props} />;
-// }
+  return <primitive object={scene} scale={state.scale} {...props} />;
+}
 
 function Home() {
-  const modelStore = useModelStore();
-
-  useEffect(() => {
-    modelStore.add(
-      "https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/druid/model.gltf"
-    );
-  }, []);
-
   return (
     <Suspense fallback={<Loader />}>
       <ambientLight intensity={0.9} />
@@ -42,18 +32,12 @@ function Home() {
         azimuth={0.25}
         distance={450000}
       />
-      {modelStore.length > 0 && (
-        <Suspense fallback={<Loader />}>
-          {modelStore.models.map((model) => {
-            <primitive
-              object={model.scene}
-              position={model.pos}
-              rotation={model.rot}
-              scale={model.scale}
-            />;
-          })}
-        </Suspense>
-      )}
+      <Model
+        location={
+          "https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/druid/model.gltf"
+        }
+        scale={[2, 2, 2]}
+      />
       <Blm
         position={[-19.8, -0.2, -44]}
         scale={[2.4, 2.55, 0.3]}
